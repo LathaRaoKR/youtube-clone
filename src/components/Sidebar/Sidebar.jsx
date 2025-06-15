@@ -16,8 +16,7 @@ import megan from "../../assets/megan.png";
 import cameron from "../../assets/cameron.png";
 import Home from '../../assets/home.png';
 
-
-const Sidebar = ({sidebar,category,setCategory}) => {
+const Sidebar = ({ sidebar, category, setCategory }) => {
   return (
     <div className={`sidebar ${sidebar ? "" : "small-sidebar"}`}>
       <div className="shortcut-link">
@@ -26,7 +25,7 @@ const Sidebar = ({sidebar,category,setCategory}) => {
           onClick={() => setCategory(0)}
         >
           <img src={Home} alt="" />
-          <p>home</p>
+          <p>Home</p>
         </div>
 
         <div
@@ -36,81 +35,151 @@ const Sidebar = ({sidebar,category,setCategory}) => {
           <img src={game_icon} alt="" />
           <p>Gaming</p>
         </div>
-        <div className={`side-link ${category===2?"active":""}`} onClick={() => setCategory(2)}>
+
+        <div
+          className={`side-link ${category === 2 ? "active" : ""}`}
+          onClick={() => setCategory(2)}
+        >
           <img src={automobiles} alt="" />
           <p>Automobiles</p>
         </div>
-        <div className={`side-link ${category===17?"active":""}`} onClick={() => setCategory(17)}>
+
+        <div
+          className={`side-link ${category === 17 ? "active" : ""}`}
+          onClick={() => setCategory(17)}
+        >
           <img src={sports} alt="" />
-          <p>sports </p>
-          <div className={`side-link ${category===24?"active":""}`} onClick={() => setCategory(24)}>
-            <img src={entertainment} alt="" />
-            <p>entertainment</p>
-          </div>
-          <div className={`side-link ${category===28?"active":""}`} onClick={() => setCategory(28)}>
-            <img src={tech} alt="" />
-            <p>tech</p>
-          </div>
-          <div className={`side-link ${category===10?"active":""}`} onClick={() => setCategory(10)}>
-            <img src={music} alt="" />
-            <p>music</p>
-          </div>
-          <div className={`side-link ${category===22?"active":""}`} onClick={() => setCategory(22)}>
-            <img src={blogs} alt="" />
-            <p>blogs</p>
-          </div>
-          <div className={`side-link ${category===25?"active":""}`} onClick={() => setCategory(25)}>
-            <img src={news} alt="" />
-            <p>news</p>
-          </div>
-          <div className={`side-link ${category===0?"active":""}`} onClick={() => setCategory(0)}>
+          <p>Sports</p>
+        </div>
+
+        <div
+          className={`side-link ${category === 24 ? "active" : ""}`}
+          onClick={() => setCategory(24)}
+        >
+          <img src={entertainment} alt="" />
+          <p>Entertainment</p>
+        </div>
+
+        <div
+          className={`side-link ${category === 28 ? "active" : ""}`}
+          onClick={() => setCategory(28)}
+        >
+          <img src={tech} alt="" />
+          <p>Tech</p>
+        </div>
+
+        <div
+          className={`side-link ${category === 10 ? "active" : ""}`}
+          onClick={() => setCategory(10)}
+        >
+          <img src={music} alt="" />
+          <p>Music</p>
+        </div>
+
+        <div
+          className={`side-link ${category === 22 ? "active" : ""}`}
+          onClick={() => setCategory(22)}
+        >
+          <img src={blogs} alt="" />
+          <p>Blogs</p>
+        </div>
+
+        <div
+          className={`side-link ${category === 25 ? "active" : ""}`}
+          onClick={() => setCategory(25)}
+        >
+          <img src={news} alt="" />
+          <p>News</p>
+        </div>
+
+        <div
+          className={`side-link ${category === 0 ? "active" : ""}`}
+          onClick={() => setCategory(0)}
+        >
+          <img src={jack} alt="" />
+          <p>Jack</p>
+        </div>
+
+        <div
+          className={`side-link ${category === 0 ? "active" : ""}`}
+          onClick={() => setCategory(0)}
+        >
+          <img src={simon} alt="" />
+          <p>Simon</p>
+        </div>
+
+        <div
+          className={`side-link ${category === 0 ? "active" : ""}`}
+          onClick={() => setCategory(0)}
+        >
+          <img src={tom} alt="" />
+          <p>Tom</p>
+        </div>
+
+        <div
+          className={`side-link ${category === 0 ? "active" : ""}`}
+          onClick={() => setCategory(0)}
+        >
+          <img src={megan} alt="" />
+          <p>Megan</p>
+        </div>
+
+        <div
+          className={`side-link ${category === 0 ? "active" : ""}`}
+          onClick={() => setCategory(0)}
+        >
+          <img src={cameron} alt="" />
+          <p>Cameron</p>
+        </div>
+
+        <hr />
+
+        <div className="subscribed-list">
+          <h3>Subscribed</h3>
+
+          <div
+            className={`side-link ${category === 0 ? "active" : ""}`}
+            onClick={() => setCategory(0)}
+          >
             <img src={jack} alt="" />
-            <p>jack </p>
+            <p>PewDiePie</p>
           </div>
-          <div className={`side-link ${category===0?"active":""}`} onClick={() => setCategory(0)}>
+
+          <div
+            className={`side-link ${category === 0 ? "active" : ""}`}
+            onClick={() => setCategory(0)}
+          >
             <img src={simon} alt="" />
-            <p>simon</p>
+            <p>MrBeast</p>
           </div>
-          <div className={`side-link ${category===0?"active":""}`} onClick={() => setCategory(0)}>
+
+          <div
+            className={`side-link ${category === 0 ? "active" : ""}`}
+            onClick={() => setCategory(0)}
+          >
             <img src={tom} alt="" />
-            <p>tom </p>
+            <p>Justin Bieber</p>
           </div>
-          <div className={`side-link ${category===0?"active":""}`} onClick={() => setCategory(0)}>
+
+          <div
+            className={`side-link ${category === 0 ? "active" : ""}`}
+            onClick={() => setCategory(0)}
+          >
             <img src={megan} alt="" />
-            <p>megan </p>
+            <p>5-minute Crafts</p>
           </div>
-          <div className={`side-link ${category===0?"active":""}`} onClick={() => setCategory(0)}>
+
+          <div
+            className={`side-link ${category === 0 ? "active" : ""}`}
+            onClick={() => setCategory(0)}
+          >
             <img src={cameron} alt="" />
-            <p>cameron</p>
-          </div>{" "}
-          <hr />
-          <div className="subscribed-list">
-            <h3>Subscribed </h3>
-            <div className={`side-link ${category===0?"active":""}`} onClick={() => setCategory(0)}>
-              <img src={jack} alt="" />
-              <p>PewDiePie</p>
-            </div>
-            <div className={`side-link ${category===0?"active":""}`} onClick={() => setCategory(0)}>
-              <img src={simon} alt="" />
-              <p>MrBeast</p>
-            </div>
-            <div className={`side-link ${category===0?"active":""}`} onClick={() => setCategory(0)}>
-              <img src={tom} alt="" />
-              <p>Justin Bieber</p>
-            </div>
-            <div className={`side-link ${category===0?"active":""}`} onClick={() => setCategory(0)}>
-              <img src={megan} alt="" />
-              <p>5-minute crafts</p>
-            </div>
-            <div className={`side-link ${category===0?"active":""}`} onClick={() => setCategory(0)}>
-              <img src={cameron} alt="" />
-              <p>Nas Daily</p>
-            </div>
+            <p>Nas Daily</p>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
-export default Sidebar
+export default Sidebar;

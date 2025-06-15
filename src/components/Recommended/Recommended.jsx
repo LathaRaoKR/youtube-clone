@@ -1,83 +1,66 @@
-import React from 'react'
-import './Recommended.css'
-import thumbnail1 from "../../assets/thumbnail1.png";
-import thumbnail2 from "../../assets/thumbnail2.png";
-import thumbnail3 from "../../assets/thumbnail3.png";
-import thumbnail4 from "../../assets/thumbnail4.png";
-import thumbnail5 from "../../assets/thumbnail5.png";
-import thumbnail6 from "../../assets/thumbnail6.png";
-import thumbnail7 from "../../assets/thumbnail7.png";
-import thumbnail8 from "../../assets/thumbnail8.png";
-const Recommended = () => {
+import React, { useEffect, useState } from "react";
+import "./Recommended.css";
+import { API_KEY } from "../../data";
+import moment from "moment";
+
+const Recommended = ({ videoId, onVideoClick, categoryId }) => {
+  const [recommendedVideos, setRecommendedVideos] = useState([]);
+
+  const fetchRecommendedVideos = async () => {
+    try {
+      const url = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics&chart=mostPopular&regionCode=US&videoCategoryId=${categoryId}&maxResults=25&key=${API_KEY}`;
+      const res = await fetch(url);
+      const data = await res.json();
+
+      if (data.items) {
+        // Filter out the current videoId (avoid showing the playing video itself)
+        const filtered = data.items.filter((video) => video.id !== videoId);
+        setRecommendedVideos(filtered);
+      }
+    } catch (error) {
+      console.error("Error fetching recommended videos:", error);
+    }
+  };
+
+  useEffect(() => {
+    if (categoryId) {
+      fetchRecommendedVideos();
+    }
+  }, [videoId, categoryId]);
+
   return (
     <div className="recommended">
-      <div className="side-video-list">
-        <img src={thumbnail1} alt="" />{" "}
-        <div className="vid-info">
-          <h4>best channel to learn web</h4>
-          <p>GreatStack</p>
-          <p>199k views</p>
-        </div>
-      
-      </div>{" "}
-      <div className="side-video-list">
-        <img src={thumbnail2} alt="" />{" "}
-        <div className="vid-info">
-          <h4>best channel to learn web</h4>
-          <p>GreatStack</p>
-          <p>199k views</p>
-        </div>
-      </div>
-      <div className="side-video-list">
-        <img src={thumbnail3} alt="" />{" "}
-        <div className="vid-info">
-          <h4>best channel to learn web</h4>
-          <p>GreatStack</p>
-          <p>199k views</p>
-        </div>
-      </div>
-      <div className="side-video-list">
-        <img src={thumbnail4} alt="" />{" "}
-        <div className="vid-info">
-          <h4>best channel to learn web</h4>
-          <p>GreatStack</p>
-          <p>199k views</p>
-        </div>
-      </div>
-      <div className="side-video-list">
-        <img src={thumbnail5} alt="" />{" "}
-        <div className="vid-info">
-          <h4>best channel to learn web</h4>
-          <p>GreatStack</p>
-          <p>199k views</p>
-        </div>
-      </div>
-      <div className="side-video-list">
-        <img src={thumbnail6} alt="" />{" "}
-        <div className="vid-info">
-          <h4>best channel to learn web</h4>
-          <p>GreatStack</p>
-          <p>199k views</p>
-        </div>
-      </div>
-      <div className="side-video-list">
-        <img src={thumbnail7} alt="" />{" "}
-        <div className="vid-info">
-          <h4>best channel to learn web</h4>
-          <p>GreatStack</p>
-          <p>199k views</p>
-        </div>
-      </div>
-      <div className="side-video-list">
-        <img src={thumbnail8} alt="" />{" "}
-        <div className="vid-info">
-          <h4>best channel to learn web</h4>
-          <p>GreatStack</p>
-          <p>199k views</p>
-        </div>
-      </div>
+      {recommendedVideos.length === 0 ? (
+        <p className="loading-text">Loading recommendations...</p>
+      ) : (
+        recommendedVideos.map((video) => (
+          <div
+            className="side-video-list"
+            key={video.id}
+            onClick={() => onVideoClick(video.id)}
+            style={{ cursor: "pointer" }}
+          >
+            <img
+              className="thumbnail"
+              src={video.snippet.thumbnails.medium.url}
+              alt={video.snippet.title}
+            />
+            <div className="vid-info">
+              <h4 className="video-title">
+                {video.snippet.title.length > 60
+                  ? video.snippet.title.slice(0, 60) + "..."
+                  : video.snippet.title}
+              </h4>
+              <p className="channel-title">{video.snippet.channelTitle}</p>
+              <p className="publish-time">
+                {moment(video.snippet.publishedAt).fromNow()}
+              </p>
+            </div>
+          </div>
+        ))
+      )}
     </div>
   );
-}
+};
 
-export default Recommended
+export default Recommended;

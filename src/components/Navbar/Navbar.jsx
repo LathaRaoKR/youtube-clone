@@ -1,7 +1,7 @@
 import React from 'react'
 import './navbar.css'
 import menu_icon from '../../assets/menu.png'
-import logo from '../../assets/logo.png'
+import youtubelogo from '../../assets/youtubelogo.png'
 import search_icon from "../../assets/search.png";
 import upload_icon from "../../assets/upload.png";
 import more_icon from "../../assets/more.png";
@@ -20,7 +20,7 @@ const Navbar = ({setSidebar}) => {
         />
         <Link to="/">
           {" "}
-          <img className="logo" src={logo} alt="" />
+          <img className="logo" src={youtubelogo} alt="" />
         </Link>
       </div>
       <div className="nav-middle flex-div">
